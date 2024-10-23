@@ -1,5 +1,5 @@
+'use client'
 import Link from "next/link";
-
 const Header = () => {
 	const name = localStorage.getItem("name");
 
