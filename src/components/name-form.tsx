@@ -1,14 +1,15 @@
-'use client'
+"use client";
 import { useStore } from "@/store/useStore";
 import React, { FormEvent, useEffect, useState } from "react";
 import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 import Link from "next/link";
+import Cookies from "js-cookie";
 const NameForm = () => {
 	const [inputName, setInputName] = useState("");
 	const { setName } = useStore();
 	useEffect(() => {
-		const savedName = localStorage.getItem("name");
+		const savedName = Cookies.get("name");
 		if (savedName) {
 			setInputName(savedName);
 			setName(savedName);
@@ -17,7 +18,7 @@ const NameForm = () => {
 	const submitHandler = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		if (inputName.trim()) {
-			localStorage.setItem("name", inputName);
+			Cookies.set("name", inputName);
 			setName(inputName);
 			Toastify({
 				text: "Name is submited",

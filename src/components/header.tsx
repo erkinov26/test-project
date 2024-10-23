@@ -1,7 +1,8 @@
-'use client'
+"use client";
 import Link from "next/link";
+import Cookies from "js-cookie";
 const Header = () => {
-	const name = localStorage.getItem("name");
+	const name = Cookies.get("name");
 
 	return (
 		<header className="flex justify-between p-3">
